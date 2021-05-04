@@ -1,0 +1,14 @@
+.zip-card {
+    max-width: 800px;
+  }
+
+.zip-div{
+  margin-top: 5%;
+  margin-left: 30%;
+}
+  
+  .zip-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+  }
+
