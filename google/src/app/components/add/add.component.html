@@ -1,0 +1,110 @@
+<div class = "mt-5"></div>
+<div class="container">
+    <div class="row">
+        <form class="col-md-6 offset-md-3" [formGroup]="addContactForm" (ngSubmit)="handleAddContactSubmit()">
+
+            <div class="form-group row">
+                <label for="staticName" class="col-sm-2 col-form-label">First Name</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control is-invalid" placeholder="Enter First name"
+                        formControlName="fname"
+                        [ngClass]="{'is-invalid' : addContactForm.get('fname')?.touched && addContactForm.get('fname')?.invalid}"
+                        required />
+                    <div class="invalid-feedback">
+                        <div>First Name is required</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="staticName" class="col-sm-2 col-form-label">Last Name</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control is-invalid" placeholder="Enter Last name"
+                        formControlName="lname"
+                        [ngClass]="{'is-invalid' : addContactForm.get('lname')?.touched && addContactForm.get('lname')?.invalid}"
+                        required />
+                    <div class="invalid-feedback">
+                        <div>Last Name is required</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="staticName" class="col-sm-2 col-form-label">Address</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control is-invalid" placeholder="Enter Address" id="search_input"
+                        formControlName="Address"
+                        [ngClass]="{'is-invalid' : addContactForm.get('Address')?.touched && addContactForm.get('Address')?.invalid}"
+                        required/>
+                    <div class="invalid-feedback">
+                        <div>Address is required</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group row">
+                <label for="staticNumber" class="col-sm-2 col-form-label">SSN</label>
+                <div class="col-sm-10">
+                    <input type="text" maxlength = "9" minlength = "9" class="form-control is-invalid" placeholder="Enter SSN" formControlName="ssn"
+                        [ngClass]="{'is-invalid' : addContactForm.get('ssn')?.touched && addContactForm.get('ssn')?.invalid}"
+                        required />
+                    <div class="invalid-feedback">
+                        <div>SSN is required</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="staticNumber" class="col-sm-2 col-form-label">Contact Number</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control is-invalid" placeholder="Enter Phone Number"
+                        formControlName="pNumber"
+                        [ngClass]="{'is-invalid' : addContactForm.get('pNumber')?.touched && addContactForm.get('pNumber')?.invalid}"
+                        required />
+                    <div class="invalid-feedback">
+                        <div>Phone Number is required</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control is-invalid" placeholder="Enter Email" formControlName="email"
+                        required
+                        [ngClass]="{'is-invalid' : addContactForm.get('email')?.touched && addContactForm.get('email')?.invalid}" />
+                    <div class="invalid-feedback">
+                        <div *ngIf="addContactForm.get('email')?.errors?.required">Email is required</div>
+                    </div>
+                </div>
+            </div>
+            <!-- <label>Location:</label>
+            <input type="text" class="form-control" id="search_input" placeholder="Type address..." /> -->
+
+            <div class="form-group row">
+                <label for="staticName" class="col-sm-2 col-form-label">Driving License</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control is-invalid" placeholder="Enter Driving License"
+                        formControlName="dl" required
+                        [ngClass]="{'is-invalid' : addContactForm.get('dl')?.touched && addContactForm.get('dl')?.invalid}" />
+                    <div class="invalid-feedback">
+                        <div *ngIf="addContactForm.get('dl')?.errors?.required">Driving License is required</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="alert alert-success" *ngIf="isSaved">
+                <div class="form-group row">
+                    <label for="staticName" class="col-sm-2 col-form-label">Saved</label>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-10 offset-sm-2">
+
+                    <button type="submit" class="btn btn-primary"
+                        [disabled]="addContactForm.status ==='INVALID'">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

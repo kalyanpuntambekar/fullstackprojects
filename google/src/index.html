@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Google</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script
+    src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyAjK21I0LrvcdsTVHf74uh-XDwo3-zpAts"></script>
+  <script>
+    var searchInput = 'search_input';
+
+    $(document).ready(function () {
+      var autocomplete;
+      autocomplete = new google.maps.places.Autocomplete((document.getElementById(searchInput)), {
+        types: ['geocode'], componentRestrictions: {
+          country: "USA"
+        }
+      });
+
+      google.maps.event.addListener(autocomplete, 'place_changed', function () {
+        var near_place = autocomplete.getPlace();
+      });
+    });
+
+  </script>
+</head>
+
+<body>
+  <app-root></app-root>
+</body>
+
+</html>
