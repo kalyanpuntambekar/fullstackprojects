@@ -1,0 +1,110 @@
+<html>
+<head>
+<title>Input an address</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+	<div class="container mt-5">
+		<form [formGroup]="queryForm" (ngSubmit)="onSubmit()" novalidate>
+			<div class="form-group">
+				First Name: <input type="text" class="form-control" id="Fname"
+					formControlName="Fname" name="Fname">
+			</div>
+			
+			<div *ngIf="!Fname?.valid && (Fname?.dirty || Fname?.touched)">
+				<div [hidden]="!Fname!.errors?.required">
+					First Name is required
+				</div>
+			</div>
+			<div class="form-group">
+				Last Name: <input type="text" class="form-control" id="Lname"
+					formControlName="Lname" name="Lname">
+			</div>
+			
+			<div *ngIf="!Lname?.valid && (Lname?.dirty || Lname?.touched)">
+				<div [hidden]="!Lname!.errors?.required">
+					Last Name is required
+				</div>
+			</div>
+			
+			<div class="form-group">
+				Address: <input type="text" class="form-control" id="adr"
+					formControlName="adr" name="adr">
+			</div>
+			
+			<div class="form-group">
+				SSN: <input type="text" class="form-control" id="ssn"
+					formControlName="ssn" name="ssn">
+			</div>
+			<div *ngIf="!ssn?.valid && (ssn?.dirty || ssn?.touched)">
+				<div [hidden]="!ssn!.errors?.required">
+					SSN is required
+				</div>
+			</div>
+			
+			<div class="form-group">
+				Contact Number: <input type="text" class="form-control" id="num"
+					formControlName="num" name="num">
+			</div>
+			
+			<div *ngIf="!num?.valid && (num?.dirty || num?.touched)">
+				<div [hidden]="!num!.errors?.required">
+					Contact Number is required
+				</div>
+			</div>
+			
+			<div class="form-group">
+				Email: <input type="text" class="form-control" id="email"
+					formControlName="email" name="email">
+			</div>
+			<div *ngIf="!email?.valid && (email?.dirty || email?.touched)">
+				<div [hidden]="!email!.errors?.required">
+					Email is required
+				</div>
+			</div>
+			
+			<div class="form-group">
+				Driving License #: <input type="text" class="form-control" id="drive"
+					formControlName="drive" name="drive">
+			</div>
+			
+			<div class="form-group">
+				<button type="submit" [disabled]="!queryForm.valid" class="mr-5 btn btn-primary">Search</button>
+				<button type="reset" class="btn btn-danger">Reset</button>
+			</div>
+			<div>
+				<div *ngIf=res>
+				<table class="table">
+					  <thead>
+					    <tr>
+					      <th scope="col">First</th>
+					      <th scope="col">Last</th>
+					      <th scope="col">SSN</th>
+					      <th scope="col">City</th>
+					      <th scope="col">Contact Number</th>
+					      <th scope="col">E-Mail</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					    <tr>
+					      <td>{{res.fname}}</td>
+					      <td>{{res.lname}}</td>
+					      <td>{{res.ssn}}</td>
+					      <td>{{res.city}}</td>
+					      <td>{{res.phone}}</td>
+					      <td>{{res.email}}</td>
+					    </tr>
+					  </tbody>
+				</table>
+				</div>
+				<div *ngIf=err>{{err}}</div>
+			</div>
+	
+	
+		</form>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
