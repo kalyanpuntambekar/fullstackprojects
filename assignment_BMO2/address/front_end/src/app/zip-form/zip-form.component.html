@@ -1,0 +1,109 @@
+<form class="example-form" [formGroup]="form">
+
+    <table class="example-full-width" cellspacing="0">
+        <tr>
+            <td>
+                <mat-form-field class="example-full-width">
+                    <mat-label>First Name</mat-label>
+                    <input matInput name="firstName" placeholder="Ex. Anirudh Reddy" formControlName="firstName"
+                        required>
+                </mat-form-field>
+                <div *ngIf="f.firstName.touched && f.firstName.invalid" class="alert alert-danger">
+                    <div *ngIf="f.firstName.errors.required">First Name is required.</div>
+                    <div *ngIf="f.firstName.errors.pattern">First Name should contain alphabets.</div>
+
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Last Name</mat-label>
+                    <input matInput name="lastName" placeholder="Ex. Gangidi" formControlName="lastName" required>
+                </mat-form-field>
+                <div *ngIf="f.lastName.touched && f.lastName.invalid" class="alert alert-danger">
+                    <div *ngIf="f.lastName.errors.required">Last Name is required.</div>
+                    <div *ngIf="f.lastName.errors.pattern">Last Name should contain alphabets.</div>
+
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <!-- (keyup)="getAddress($event.target.value)" : 37 -->
+            <td>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Address</mat-label>
+                    <input type="text" placeholder="Ex: 1601 W. Bradley Avenue" matInput formControlName="address"
+                         >
+                    <mat-autocomplete autoActiveFirstOption >
+                        <mat-option *ngFor="let option of addressResults" [value]="option">
+                            {{option}}
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <mat-form-field class="example-full-width">
+                    <mat-label>SSN</mat-label>
+                    <input matInput formControlName="ssn" id="ssn" type="text" class="form-control"
+                        placeholder="Ex: 309-89-5143" [value]="form.get('ssn').value"
+                        (focusout)="formatSsn($event.target.value)" required>
+                </mat-form-field>
+                <div *ngIf="f.ssn.touched && f.ssn.invalid" class="alert alert-danger">
+                    <div *ngIf="f.ssn.errors.required">SSN Number is required.</div>
+                    <div *ngIf="f.ssn.errors.pattern">Please, Enter 9 digit SSN Number.</div>
+                </div>
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Contact Number</mat-label>
+                    <input matInput formControlName="contact" id="contact" type="text" class="form-control"
+                        placeholder="309 898 5143" required>
+                </mat-form-field>
+                <div *ngIf="f.contact.touched && f.contact.invalid" class="alert alert-danger">
+                    <div *ngIf="f.contact.errors.required">Mobile Number is required.</div>
+                    <div *ngIf="f.contact.errors.pattern">Please, Enter 10 digit Mobile Number.</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Email Address</mat-label>
+                    <input matInput name="email" placeholder="Ex. anirudhreddy.g128@gmail.com" formControlName="email"
+                        required>
+                </mat-form-field>
+                <div *ngIf="f.email.touched && f.email.invalid" class="alert alert-danger">
+                    <div *ngIf="f.email.errors.required">Email is required.</div>
+                    <div *ngIf="f.email.errors.email">Please, Enter valid email address.</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Driving Licence</mat-label>
+                    <input matInput formControlName="drivingLicense" id="drivingLicense" type="text" class="form-control"
+                        placeholder="309 898 5143" required>
+                </mat-form-field>
+                <div *ngIf="f.drivingLicense.touched && f.drivingLicense.invalid" class="alert alert-danger">
+                    <div *ngIf="f.drivingLicense.errors.required">Driving drivingLicense is required.</div>
+                    <div *ngIf="f.drivingLicense.errors.pattern">Please, Enter 9 digit valid drivingLicense number.</div>
+                </div>
+            </td>
+        </tr>
+
+    </table>
+    <br>
+    <button mat-raised-button color="primary" (click)="submit()" [disabled]="form.invalid">Submit</button>
+    <hr>
+</form>
+
+
+<!-- <h1 *ngIf="zip4">Zip4: {{zip4}}</h1> -->
