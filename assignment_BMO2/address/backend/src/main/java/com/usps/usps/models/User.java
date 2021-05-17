@@ -1,16 +1,20 @@
 package com.usps.usps.models;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document("User")
+@Document(collection = "users")
 public class User {
     private String firstName;
     private String lastName;
+    @Indexed(unique = true)
     private String SSN;
-
+    @Indexed(unique = true)
     private String contact;
+    @Indexed(unique = true)
     private String email;
+    @Indexed(unique = true)
     private String drivingLicense;
 
     public String getAddress() {

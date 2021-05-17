@@ -3,6 +3,7 @@ package com.usps.usps.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import com.usps.usps.exception.CustomeException;
+
 import com.usps.usps.models.User;
 import com.usps.usps.repositories.UserRepository;
 import com.usps.usps.service.UserService;
@@ -28,7 +29,7 @@ public class UserController {
 
     private final UserRepository userRepository;
 
-    private CustomeException CustomeException;
+   
     
     private String url = "https://maps.googleapis.com/maps/api/place/autocomplete/json?input=";
 
@@ -47,7 +48,7 @@ public class UserController {
     }*/
 
     @PostMapping("/user")
-    public User addUser(@RequestBody User user){
+    public ResponseEntity<Object> addUser(@RequestBody User user){
         return userService.addUser(user);
     }
 
